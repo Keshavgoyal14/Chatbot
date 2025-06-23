@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const chat_1 = require("../controllers/chat");
+const user_validator_1 = require("../utils/user-validator");
+const express_1 = require("express");
+const token_manger_1 = require("../utils/token-manger");
+const checkPlanExpiry_1 = require("../utils/checkPlanExpiry");
+const chatRoutes = (0, express_1.Router)();
+chatRoutes.post("/session", token_manger_1.verifytoken, checkPlanExpiry_1.checkPlanExpiry, chat_1.createNewSession);
+chatRoutes.get("/sessions", token_manger_1.verifytoken, chat_1.listSessions);
+chatRoutes.get("/session/:sessionId", token_manger_1.verifytoken, chat_1.getSessionMessages);
+chatRoutes.post("/session/:sessionId/message", token_manger_1.verifytoken, (0, user_validator_1.validate)(user_validator_1.chatValidator), chat_1.generateChatCompletion);
+chatRoutes.delete("/session/:sessionId", token_manger_1.verifytoken, chat_1.deleteSession);
+exports.default = chatRoutes;
