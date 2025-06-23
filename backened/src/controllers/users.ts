@@ -22,7 +22,7 @@ export const usersignup = async (req: Request, res: Response, next: NextFunction
         const hashedPassword = await hash(password, 10);
         const user = new User({ name, email, password: hashedPassword });
         await user.save();
-        const cookieDomain = process.env.FRONTEND_URL || "localhost";
+        const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
          res.clearCookie("auth-token", { path: "/", domain: cookieDomain, httpOnly: true, signed: true  });
          const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days from now
             const token = createtoken(user._id.toString(), user.email, "7d");
@@ -48,7 +48,7 @@ export const userlogin = async (req: Request, res: Response, next: NextFunction)
          res.status(401).send({ success: false, message: "Invalid email or password" });
          return;
         }
-        const cookieDomain = process.env.FRONTEND_URL || "localhost";
+        const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
         res.clearCookie("auth-token", { path: "/", domain: cookieDomain, httpOnly: true, signed: true  });
          const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); 
             const token = createtoken(user._id.toString(), user.email, "7d");
@@ -82,7 +82,7 @@ export const userVerify = async (req: Request, res: Response, next: NextFunction
 }
 export const userlogout = async (req: Request, res: Response, next: NextFunction) => {
     try {
-          const cookieDomain = process.env.FRONTEND_URL || "localhost";
+          const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
         res.clearCookie("auth-token", { path: "/", domain:cookieDomain, httpOnly: true, signed: true });
         res.status(200).json({ success: true, message: "Logged out successfully" });
     } catch (error) {
