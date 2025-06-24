@@ -23,7 +23,7 @@ function Signup() {
     }
     setLoading(true);
     try {
-      if(!auth){
+      if (!auth) {
         throw new Error("Authentication context is not available");
       }
       await auth.signup(name, email, password);
@@ -36,10 +36,10 @@ function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="absolute top-10 left-10 w-72 h-72 bg-purple-700 rounded-full opacity-30 blur-2xl"></div>
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-400 rounded-full opacity-20 blur-2xl"></div>
-      <div className="bg-gray-950 rounded-xl shadow-2xl p-8 w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center relative">
+      <div className="absolute top-10 left-10 w-72 h-72 bg-purple-700 rounded-full opacity-30 blur-2xl z-0"></div>
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-400 rounded-full opacity-20 blur-2xl z-0"></div>
+      <div className="bg-gray-950 rounded-xl shadow-2xl p-8 w-full max-w-md z-10 relative">
         <h2 className="text-3xl font-extrabold text-center mb-6 tracking-widest uppercase bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 bg-clip-text text-transparent drop-shadow-lg select-none">
           Sign up for <span className="text-gray-300 bg-none">Chat.AI</span>
         </h2>
