@@ -38,8 +38,7 @@ function App() {
     <Header createSession={createSession}/>
     <Routes>
       <Route path='/' element={<Home/>}/>
-
-      <Route path='/chat-pdf' element={<Chatpdf/>}/>
+ <Route path='/chat-pdf' element={<Chatpdf/>}/>
       <Route path='/chat-audio' element={<Index/>}/>
       <Route path='/chat/session/:sessionId' element={<Chat createSession={createSession}
       sessions={sessions}

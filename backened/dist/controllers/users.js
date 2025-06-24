@@ -29,10 +29,11 @@ const usersignup = async (req, res, next) => {
         const hashedPassword = await (0, bcrypt_1.hash)(password, 10);
         const user = new users_1.default({ name, email, password: hashedPassword });
         await user.save();
-        res.clearCookie("auth-token", { path: "/", domain: "localhost", httpOnly: true, signed: true });
+        const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
+        res.clearCookie("auth-token", { path: "/", httpOnly: true, signed: true, sameSite: "none", secure: true });
         const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days from now
         const token = (0, token_manger_1.createtoken)(user._id.toString(), user.email, "7d");
-        res.cookie("auth-token", token, { path: "/", domain: "localhost", expires, httpOnly: true, signed: true });
+        res.cookie("auth-token", token, { path: "/", expires, httpOnly: true, signed: true, sameSite: "none", secure: true });
         res.status(200).json({ success: true, name: user.name, email: user.email });
     }
     catch (error) {
@@ -54,10 +55,11 @@ const userlogin = async (req, res, next) => {
             res.status(401).send({ success: false, message: "Invalid email or password" });
             return;
         }
-        res.clearCookie("auth-token", { path: "/", domain: "localhost", httpOnly: true, signed: true });
+        const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
+        res.clearCookie("auth-token", { path: "/", httpOnly: true, signed: true, sameSite: "none", secure: true });
         const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
         const token = (0, token_manger_1.createtoken)(user._id.toString(), user.email, "7d");
-        res.cookie("auth-token", token, { path: "/", domain: "localhost", expires, httpOnly: true, signed: true });
+        res.cookie("auth-token", token, { path: "/", expires, httpOnly: true, signed: true, sameSite: "none", secure: true });
         res.status(200).json({ success: true, name: user.name, email: user.email });
     }
     catch (error) {
@@ -86,7 +88,8 @@ const userVerify = async (req, res, next) => {
 exports.userVerify = userVerify;
 const userlogout = async (req, res, next) => {
     try {
-        res.clearCookie("auth-token", { path: "/", domain: "localhost", httpOnly: true, signed: true });
+        const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
+        res.clearCookie("auth-token", { path: "/", httpOnly: true, signed: true, sameSite: "none", secure: true });
         res.status(200).json({ success: true, message: "Logged out successfully" });
     }
     catch (error) {

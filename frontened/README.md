@@ -1,6 +1,10 @@
 # Chatbot Fullstack Project
 This project is a fullstack AI-powered chatbot web application that enables users to interact with uploaded PDFs and audio files through natural language conversations. It is built using **React (Vite + TypeScript)** on the frontend and **Node.js (Express + TypeScript)** on the backend. The application features secure authentication, persistent session management, cloud-based file storage, semantic search capabilities, and payment integration. It leverages modern cloud and AI services including **Google GenAI**, **Pinecone**, **AWS S3**, and **Razorpay** to deliver scalable and intelligent functionality.
 
+#Live Demo
+
+https://chatbot-1-alz2.onrender.com
+
 ## Features
 
 - **User Authentication**: Secure login and registration using JWT and HTTP-only cookies.
