@@ -1,4 +1,4 @@
-# Chatbot Fullstack Project
+# Fullstack Chatbot Project
 
 This project is a fullstack AI-powered chatbot web application that enables users to interact with uploaded PDFs and audio files through natural language conversations. It is built using **React (Vite + TypeScript)** on the frontend and **Node.js (Express + TypeScript)** on the backend. The application features secure authentication, persistent session management, cloud-based file storage, semantic search capabilities, and payment integration. It leverages modern cloud and AI services including **Google GenAI**, **Pinecone**, **AWS S3**, and **Razorpay** to deliver scalable and intelligent functionality.
 
@@ -51,7 +51,7 @@ Chatbot/
 └── README.md
 ```
 # Backend .env
-cat <<EOF > backened/.env
+```
 MONGODB_URL=
 GOOGLE_GENAI_API_KEY=
 JWT_SECRET=
@@ -70,12 +70,12 @@ PINECONE_INDEX_NAME=
 
 RAZORPAY_SECRET_KEY=
 EOF
-
+```
 # Frontend .env
-cat <<EOF > frontened/.env
+```
 VITE_API_URL=http://localhost:5000
 VITE_RAZORPAY_KEY_ID=
-EOF
+```
 
 
 ---
