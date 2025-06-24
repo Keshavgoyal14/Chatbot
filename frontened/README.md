@@ -1,54 +1,100 @@
-# React + TypeScript + Vite
+# Chatbot Fullstack Project
+This project is a fullstack AI-powered chatbot web application that enables users to interact with uploaded PDFs and audio files through natural language conversations. It is built using **React (Vite + TypeScript)** on the frontend and **Node.js (Express + TypeScript)** on the backend. The application features secure authentication, persistent session management, cloud-based file storage, semantic search capabilities, and payment integration. It leverages modern cloud and AI services including **Google GenAI**, **Pinecone**, **AWS S3**, and **Razorpay** to deliver scalable and intelligent functionality.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
 
-Currently, two official plugins are available:
+- **User Authentication**: Secure login and registration using JWT and HTTP-only cookies.
+- **PDF Chat**: Upload and interact with the content of PDF documents.
+- **Audio Chat**: Upload audio files, transcribe them, and chat with the transcribed content.
+- **Session Management**: Save and revisit past chat sessions.
+- **Payment Integration**: Enable plan upgrades using Razorpay.
+- **Cloud File Storage**: Store uploaded files securely in AWS S3.
+- **Semantic Search**: Use Pinecone for vector-based search across document content.
+- **AI Chat Generation**: Use Google GenAI for generating AI responses.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React, TypeScript, Axios, Tailwind CSS  
+- **Backend:** Node.js, Express.js, TypeScript, JWT, Multer, CORS, Cookie Parser  
+- **Database:** MongoDB
+-**AI / ML:** Google GenAI, Pinecone, LangChain 
+- **Storage:** AWS S3  
+- **Payments:** Razorpay  
+- **Deployment :** Render
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Folder Structure
+Chatbot/
+├── backened/ # Node.js + Express + TypeScript backend
+│ ├── src/
+│ ├── .env
+│ └── ...
+├── frontened/ # React + Vite + TypeScript frontend
+│ ├── src/
+│ ├── .env
+│ ├── static.json # SPA routing configuration for Render
+│ └── ...
+└── README.md
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+# Backend .env
+cat <<EOF > backened/.env
+MONGODB_URL=
+GOOGLE_GENAI_API_KEY=
+JWT_SECRET=
+COOKIE_SECRET=
+PORT=5000
+FRONTEND_URL=http://localhost:5173
+COOKIE_DOMAIN=localhost
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=
+AWS_S3_BUCKET_NAME=
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+PINECONE_API_KEY=
+PINECONE_INDEX_NAME=
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+RAZORPAY_SECRET_KEY=
+EOF
+
+# Frontend .env
+cat <<EOF > frontened/.env
+VITE_API_URL=http://localhost:5000
+VITE_RAZORPAY_KEY_ID=
+EOF
+
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/Chatbot.git
+cd Chatbot
+
+cd backened
+npm install
+cp .env.example .env   # Populate all required environment variables
+npm run dev
+
+cd ../frontened
+npm install
+cp .env.example .env   # Define API base URL and Razorpay key
+npm run dev
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute this software with proper attribution.
+
+---
+
+## Author
+
+**Keshav Goyal**  
+[GitHub](https://github.com/Keshavgoyal14) • [LinkedIn](https://www.linkedin.com/in/keshavgoyal14)
+
+For feedback, suggestions, or collaboration opportunities, feel free to connect.
