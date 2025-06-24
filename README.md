@@ -1,32 +1,43 @@
 # Chatbot Fullstack Project
+
 This project is a fullstack AI-powered chatbot web application that enables users to interact with uploaded PDFs and audio files through natural language conversations. It is built using **React (Vite + TypeScript)** on the frontend and **Node.js (Express + TypeScript)** on the backend. The application features secure authentication, persistent session management, cloud-based file storage, semantic search capabilities, and payment integration. It leverages modern cloud and AI services including **Google GenAI**, **Pinecone**, **AWS S3**, and **Razorpay** to deliver scalable and intelligent functionality.
 
-#Live Demo
+---
 
-https://chatbot-1-alz2.onrender.com
+## 🚀 Live Demo
 
-## Features
+🔗 [https://chatbot-1-alz2.onrender.com](https://chatbot-1-alz2.onrender.com)
 
-- **User Authentication**: Secure login and registration using JWT and HTTP-only cookies.
-- **PDF Chat**: Upload and interact with the content of PDF documents.
-- **Audio Chat**: Upload audio files, transcribe them, and chat with the transcribed content.
-- **Session Management**: Save and revisit past chat sessions.
-- **Payment Integration**: Enable plan upgrades using Razorpay.
-- **Cloud File Storage**: Store uploaded files securely in AWS S3.
-- **Semantic Search**: Use Pinecone for vector-based search across document content.
-- **AI Chat Generation**: Use Google GenAI for generating AI responses.
+---
 
-## Tech Stack
+## ✅ Features
+
+- **User Authentication** – Secure login and registration using JWT and HTTP-only cookies
+- **PDF Chat** – Upload and interact with the content of PDF documents
+- **Audio Chat** – Upload audio files, transcribe them, and chat with the transcribed content
+- **Session Management** – Save and revisit past chat sessions
+- **Payment Integration** – Enable plan upgrades using Razorpay
+- **Cloud File Storage** – Store uploaded files securely in AWS S3
+- **Semantic Search** – Use Pinecone for vector-based document search
+- **AI Chat Generation** – Use Google GenAI for intelligent responses
+
+---
+
+## 🧰 Tech Stack
 
 - **Frontend:** React, TypeScript, Axios, Tailwind CSS  
 - **Backend:** Node.js, Express.js, TypeScript, JWT, Multer, CORS, Cookie Parser  
-- **Database:** MongoDB
--**AI / ML:** Google GenAI, Pinecone, LangChain 
+- **Database:** MongoDB  
+- **AI / ML:** Google GenAI, Pinecone, LangChain  
 - **Storage:** AWS S3  
 - **Payments:** Razorpay  
-- **Deployment :** Render
+- **Deployment:** Render
 
-## Folder Structure
+---
+
+## 📁 Folder Structure
+
+```
 Chatbot/
 ├── backened/ # Node.js + Express + TypeScript backend
 │ ├── src/
@@ -38,7 +49,7 @@ Chatbot/
 │ ├── static.json # SPA routing configuration for Render
 │ └── ...
 └── README.md
-
+```
 # Backend .env
 cat <<EOF > backened/.env
 MONGODB_URL=
@@ -69,7 +80,7 @@ EOF
 
 ---
 
-## Getting Started
+## 🛠️ Getting Started
 
 ### 1. Clone the Repository
 
@@ -89,14 +100,14 @@ npm run dev
 
 ```
 
-## License
+##📜 License
 
 This project is licensed under the [MIT License](LICENSE).  
 You are free to use, modify, and distribute this software with proper attribution.
 
 ---
 
-## Author
+##👨‍💻 Author
 
 **Keshav Goyal**  
 [GitHub](https://github.com/Keshavgoyal14) • [LinkedIn](https://www.linkedin.com/in/keshavgoyal14)
