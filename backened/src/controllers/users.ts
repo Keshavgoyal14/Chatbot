@@ -23,10 +23,10 @@ export const usersignup = async (req: Request, res: Response, next: NextFunction
         const user = new User({ name, email, password: hashedPassword });
         await user.save();
         const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
-         res.clearCookie("auth-token", { path: "/", domain: cookieDomain, httpOnly: true, signed: true  });
+         res.clearCookie("auth-token", { path: "/", domain: cookieDomain, httpOnly: true, signed: true ,sameSite: "none", secure: true });
          const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days from now
             const token = createtoken(user._id.toString(), user.email, "7d");
-            res.cookie("auth-token",token, { path: "/", domain: cookieDomain, expires, httpOnly: true, signed: true })
+            res.cookie("auth-token",token, { path: "/", domain: cookieDomain, expires, httpOnly: true, signed: true ,sameSite: "none", secure: true })
 
         res.status(200).json({ success: true, name:user.name,email:user.email })
     } catch (error) {
@@ -49,10 +49,10 @@ export const userlogin = async (req: Request, res: Response, next: NextFunction)
          return;
         }
         const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
-        res.clearCookie("auth-token", { path: "/", domain: cookieDomain, httpOnly: true, signed: true  });
+        res.clearCookie("auth-token", { path: "/", domain: cookieDomain, httpOnly: true, signed: true,sameSite :"none", secure:true });
          const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); 
             const token = createtoken(user._id.toString(), user.email, "7d");
-            res.cookie("auth-token",token, { path: "/", domain:cookieDomain, expires, httpOnly: true, signed: true })
+            res.cookie("auth-token",token, { path: "/", domain:cookieDomain, expires, httpOnly: true, signed: true,sameSite:"none", secure:true })
 
         res.status(200).json({ success: true,name:user.name,email:user.email  })
     } catch (error) {
@@ -83,7 +83,7 @@ export const userVerify = async (req: Request, res: Response, next: NextFunction
 export const userlogout = async (req: Request, res: Response, next: NextFunction) => {
     try {
           const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
-        res.clearCookie("auth-token", { path: "/", domain:cookieDomain, httpOnly: true, signed: true });
+        res.clearCookie("auth-token", { path: "/", domain:cookieDomain, httpOnly: true, signed: true,sameSite: "none", secure: true });
         res.status(200).json({ success: true, message: "Logged out successfully" });
     } catch (error) {
         console.log(error);
